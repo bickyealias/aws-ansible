@@ -1,9 +1,0 @@
---- 
-- 
-  loadbalancers: 
-    - 
-      httpd: 2.3
-  webservers: 
-    - 
-      httpd: 2.2
-      php: 7.3

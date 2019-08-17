@@ -1,0 +1,7 @@
+# tests ping on all hosts
+---
+  - hosts: all
+    tasks:
+      - name : Ping_all_Servers
+        action: ping
+  

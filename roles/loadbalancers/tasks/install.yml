@@ -1,0 +1,8 @@
+  - name: Repolistupdate
+    yum: name=* state=latest 
+
+  - name: Installing services
+    yum: name=httpd state=present
+
+  - name: Ensure apache is started
+    service: name=httpd state=started enabled=yes

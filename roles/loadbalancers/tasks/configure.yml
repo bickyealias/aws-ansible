@@ -1,0 +1,32 @@
+
+  - name: Creating template
+    template:
+      src: ../templates/lb-config.j2
+      dest:  /etc/httpd/conf.d/lb.conf
+      owner: root
+      group: root
+      mode: 064
+    notify: restart apache
+  - name: See directory contents
+    command: cat /etc/httpd/conf.d/lb.conf
+    register: lb_conf
+
+  - name: Debug directory contents
+    debug:
+      msg: "{{ lb_conf }}"
+
+  - name: Check status of apache
+    command: service httpd status
+    register: apache_status
+
+  - name: Print Apache Status 
+    debug:
+      msg: " {{ apache_status }}"
+
+  - name: Check version of apache
+    command: httpd -v
+    register: apache_version
+
+  - name: Print Apache Status     
+    debug:
+      msg: " {{ apache_version }}"      

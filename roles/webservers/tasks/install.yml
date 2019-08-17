@@ -1,0 +1,10 @@
+  - name: repolistupdate
+    yum: name=* state=latest  
+  - name: Installing services
+    yum:
+      name: 
+        - httpd
+        - php
+      state: present
+  - name: Ensure apache starts
+    service: name=httpd state=started enabled=yes
