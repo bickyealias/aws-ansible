@@ -1,0 +1,31 @@
+# ---
+# - name: Update Host repo lists
+#   include_role:
+#     name: common
+#     tasks_from:  Update yum repolist for RHEL
+#   when: ansible_os_family  == "Redhat"
+#   include_role:
+#     name: common
+#     tasks_from: Update apt repo list for Ubuntia/Debian
+#   when: ansible_os_family  == "Debian" or
+#         ansible_os_family  == "Ubuntu"
+
+# - name: Install Apache
+#   include_role:
+#       name: common
+#       tasks_from:  Install Apache for RHEL
+#   when: ansible_os_family  == "Redhat"
+#   include_role:
+#       name: common
+#       tasks_from: Install Apache for Ubuntia/Debian
+#   when: ansible_os_family  == "Debian" or
+#         ansible_os_family  == "Ubuntu"     
+
+- name: Gather Requirements
+  debug:
+    msg: "{{ item }}"
+  with_ini:
+     - .*
+     - section: webservers
+     - file: tools.ini
+     - re: true

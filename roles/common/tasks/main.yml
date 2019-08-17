@@ -1,0 +1,11 @@
+# Common Tasks
+
+---
+  - name: "List Required tools"
+    include_vars: 
+      file: ../files/tools.json
+      name: tools
+    register: tools
+  - name: "Print Required tools"  
+    debug:
+      var: tools
